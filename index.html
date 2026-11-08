@@ -1,0 +1,211 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>NYC Pocket Cheat Sheet</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Concept: a phone-first field card. Sticky day filter, one card per person, Say/Ask pairs readable in two seconds. */
+:root{
+  --bg:#EDF0F3; --card:#FFFFFF; --ink:#141C26; --muted:#556070; --line:#D5DBE2;
+  --accent:#0B5D4B; --accent-ink:#FFFFFF; --hl:#FFE8A3; --hl-ink:#3A2E00;
+  --display:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;
+  --body:'Public Sans','Helvetica Neue',Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F151C; --card:#18212B; --ink:#E8EDF2; --muted:#9AA7B6; --line:#2A3644;
+    --accent:#4FC9A6; --accent-ink:#06251D; --hl:#5A4A12; --hl-ink:#FFE8A3; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F151C; --card:#18212B; --ink:#E8EDF2; --muted:#9AA7B6; --line:#2A3644;
+  --accent:#4FC9A6; --accent-ink:#06251D; --hl:#5A4A12; --hl-ink:#FFE8A3; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);padding:14px 0 10px;border-bottom:1px solid var(--line)}
+h1{font-family:var(--display);font-weight:700;font-size:1.5rem;line-height:1.1;margin:0 0 2px;text-wrap:balance}
+.sub{margin:0 0 10px;color:var(--muted);font-size:.875rem}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.days button{flex:0 0 auto;font:inherit;font-weight:600;font-size:.9rem;min-height:40px;padding:0 16px;border-radius:20px;
+  border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.days button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+section{margin-top:22px}
+h2{font-family:var(--display);font-weight:700;font-size:1.125rem;margin:0 0 10px}
+.opener{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.opener p{margin:0 0 12px}
+.copy{font:inherit;font-weight:600;font-size:.9rem;min-height:40px;padding:0 16px;border-radius:10px;border:1px solid var(--accent);
+  background:transparent;color:var(--accent);cursor:pointer}
+.vtabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.vtabs button{font:inherit;font-size:.85rem;font-weight:600;min-height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.vtabs button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.vtabs button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.vuse{color:var(--muted);font-size:.9rem}
+.ph{background:var(--hl);color:var(--hl-ink);padding:0 4px;border-radius:4px;font-weight:600}
+.cards{display:grid;gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 14px 4px;min-width:0}
+.head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.name{font-family:var(--display);font-weight:700;font-size:1.1875rem;line-height:1.2;margin:0}
+.firm{margin:2px 0 0;color:var(--muted);font-size:.875rem}
+.pill{flex:0 0 auto;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:12px}
+.pill.high{background:var(--accent);color:var(--accent-ink)}
+.pill.med{border:1px solid var(--accent);color:var(--accent)}
+.pill.tbc{border:1px dashed var(--muted);color:var(--muted)}
+.who{margin:10px 0 0;font-size:.95rem}
+.pair{display:grid;grid-template-columns:3.2rem minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--line);margin-top:10px}
+.pair + .pair{margin-top:0}
+.tag{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:3px}
+.pair p{margin:0}
+.day{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+ul.plain{margin:0;padding-left:1.1rem}
+ul.plain li{margin:4px 0}
+.note{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.note p{margin:0 0 8px}.note p:last-child{margin:0}
+ol.rules{margin:0;padding-left:1.25rem}
+ol.rules li{margin:6px 0}
+.foot{margin-top:24px;color:var(--muted);font-size:.8125rem}
+@media (prefers-reduced-motion:no-preference){.days button,.copy{transition:background .15s,color .15s}}
+@media (min-width:640px){.cards{grid-template-columns:1fr 1fr}.card{padding-bottom:6px}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>NYC Pocket Cheat Sheet</h1>
+    <p class="sub">Vinci Compass Alternative Investments Week · Nov 9–12 · Luciana</p>
+    <div class="days" id="days" role="group" aria-label="Filter by day"></div>
+  </header>
+
+  <section aria-labelledby="h-open">
+    <h2 id="h-open">Your opener: pick one</h2>
+    <div class="opener">
+      <div class="vtabs" id="vtabs" role="group" aria-label="Opener versions"></div>
+      <p class="vuse" id="openerUse"></p>
+      <p id="openerText"></p>
+      <button class="copy" id="copyBtn" type="button">Copy opener</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-people">
+    <h2 id="h-people">Who to talk to <span id="count" style="color:var(--muted);font-weight:500"></span></h2>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section aria-labelledby="h-friendly">
+    <h2 id="h-friendly">Be friendly, don’t pitch</h2>
+    <div class="note">
+      <p>Sebastien Sherman, Dan Oneglia, Riad Abrahams, Chris Taylor, Mitchell Goldstein, Henry Deng, Daniel Loeb.</p>
+      <p>A greeting and one question about their work is enough.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-rules">
+    <h2 id="h-rules">Three rules</h2>
+    <div class="note">
+      <ol class="rules">
+        <li>Listen first: ask what they invest in before you tell your story.</li>
+        <li>Keep every answer under 30 seconds, then ask a question back.</li>
+        <li>If you don’t know a number, say “I’ll send you the exact figures.”</li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-money">
+    <h2 id="h-money">If asked about money</h2>
+    <div class="note">
+      <p>“We’re raising 1.6 million dollars. I’ll send the details and the deck.”</p>
+      <p>Don’t say what the company is worth unless the numbers were agreed beforehand.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-after">
+    <h2 id="h-after">After each conversation</h2>
+    <div class="note">
+      <p>Write down the name, what they said, and the next step. Send a two-line note, the deck and the website within 24 hours.</p>
+    </div>
+  </section>
+
+  <p class="foot">Full profiles are in the briefing document.</p>
+</div>
+
+<script>
+(function(){
+  var DAYS=[["all","All"],["mon","Mon 9"],["tue","Tue 10"],["wed","Wed 11"],["thu","Thu 12"]];
+  var PEOPLE=[
+    {d:"mon",n:"George Kerr",f:"Vinci Compass",w:"Sells investment products to investors in Brazil",p:"high",s:"I’m Brazilian, with a big audience around the world, mostly outside Brazil.",a:"Which of your clients like to invest in young companies?"},
+    {d:"mon",n:"Daniel Gordonos",f:"Vinci Compass",w:"Runs the hedge funds at Vinci Compass. Worked at Citadel and Balyasny. Stanford MBA.",p:"med",s:"I’d love your view on how investors see a business built around a person and their audience.",a:"Do your clients ever invest directly in companies, not only in funds?"},
+    {d:"mon",n:"Anabel Vidal, José Tomás Vicuña",f:"Vinci Compass (if present)",w:"Lead the teams that serve wealthy families",p:"high",s:"I’m building a website where experts share their courses with my audience.",a:"Which families invest in new companies?"},
+    {d:"tue",n:"Rodney Zemmel",f:"Blackstone",w:"Helps Blackstone’s companies run better, including with AI. Ex-McKinsey.",p:"high",s:"We built AI coaches for riders, and we’re opening the site to other experts.",a:"Where do AI coaching products work, and where not?"},
+    {d:"wed",n:"William Rosener",f:"Blackstone Strategic Partners",w:"Talks with Blackstone’s investors and helps bring in new ones",p:"high",s:"I’m looking for the right investors, not just any.",a:"Who here should I meet to talk about a young company selling online courses and apps?"},
+    {d:"wed",n:"Grace Ma",f:"One Equity Partners",w:"Talks with the investors who put money into One Equity Partners",p:"high",s:"I’m new to fundraising and would love your advice.",a:"Which of your investors like companies built around a person?"},
+    {d:"wed",n:"Greg Belinfanti",f:"One Equity Partners",w:"Senior partner. Invests mostly in health care companies.",p:"med",s:"My work connects performance and wellbeing.",a:"How do you judge a wellness or performance business?"},
+    {d:"wed",n:"Carlo Padovano",f:"One Equity Partners",w:"Partner. Invests in technology companies.",p:"med",s:"We built technology that matches people, and other companies could pay to use it.",a:"What makes technology something other companies will pay to use?"},
+    {d:"wed",n:"Viral Patel",f:"Blackstone",w:"Runs a Blackstone private equity business. Has a technology and growth background.",p:"med",s:"I’d love your view on subscription websites.",a:"What separates subscription sites that grow from those that stall?"},
+    {d:"thu",n:"Matthew Witheiler",f:"Wellington",w:"Invests in fast-growing companies, including consumer and tech. Used to invest in start-ups.",p:"high",s:"We’re early, and I want to understand what growth investors need to see.",a:"What would a subscription site need to show you?"},
+    {d:"thu",n:"Barry Miller",f:"Ares",w:"Partner at Ares. Used to run private equity for New York City’s pension funds.",p:"med",s:"I’d love your view from the investor side.",a:"What do investors check first when the founder’s name is the main asset?"},
+    {d:"thu",n:"Ares sports, media and entertainment speaker",f:"Ares",w:"Name to confirm on the day",p:"tbc",s:"My career is in sport, and I have a global audience.",a:"Which sports and media investors back businesses started by athletes?"}
+  ];
+  var LABEL={high:"Priority",med:"Medium",tbc:"Name TBC"};
+  var DAYNAME={mon:"Monday",tue:"Tuesday",wed:"Wednesday",thu:"Thursday"};
+  var cur="all";
+  try{var s=localStorage.getItem("nyc-day"); if(s) cur=s;}catch(e){}
+  var h=(location.hash||"").slice(1); if(DAYS.some(function(d){return d[0]===h;})) cur=h;
+
+  function esc(t){var d=document.createElement("div");d.textContent=t;return d.innerHTML;}
+  function render(){
+    var daysEl=document.getElementById("days");
+    daysEl.innerHTML=DAYS.map(function(d){return '<button type="button" data-d="'+d[0]+'" aria-pressed="'+(d[0]===cur)+'">'+d[1]+'</button>';}).join("");
+    var list=PEOPLE.filter(function(p){return cur==="all"||p.d===cur;});
+    document.getElementById("count").textContent="· "+list.length;
+    document.getElementById("cards").innerHTML=list.map(function(p){
+      return '<article class="card"><p class="day">'+DAYNAME[p.d]+'</p>'+
+        '<div class="head"><div><h3 class="name">'+esc(p.n)+'</h3><p class="firm">'+esc(p.f)+'</p></div>'+
+        '<span class="pill '+p.p+'">'+LABEL[p.p]+'</span></div>'+
+        '<p class="who">'+esc(p.w)+'</p>'+
+        '<div class="pair"><span class="tag">Say</span><p>'+esc(p.s)+'</p></div>'+
+        '<div class="pair"><span class="tag">Ask</span><p>'+esc(p.a)+'</p></div></article>';
+    }).join("");
+  }
+  document.getElementById("days").addEventListener("click",function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    cur=b.getAttribute("data-d");
+    try{localStorage.setItem("nyc-day",cur);}catch(err){}
+    render();
+  });
+  var V=[
+   {l:"30s · Athlete",u:"About 30 seconds. Main selling point: her results in the sport. Best with people who respect achievement: Vinci Compass hosts, Barry Miller, the Ares sports speaker.",t:"“I’m Luciana Diniz. I’ve been to five Olympic Games, I was ranked fourth in the world, and this year I won a five-star Grand Prix in Abu Dhabi. After thirty years at the top of the sport, I built an audience of 147,000 people and a site where riders learn from me. Now I’m opening it to other experts. I’m raising 1.6 million dollars to do it, and I’d love to send you the deck.”"},
+   {l:"30s · Teacher",u:"About 30 seconds. Main selling point: how she teaches. Best with people who care about learning and people: Rodney Zemmel, Viral Patel, Matthew Witheiler.",t:"“I’m Luciana Diniz. I teach riders and company leaders my own method, the Butterfly Method, in clinics and courses, and I’ve taught hundreds of students in more than 40 countries. I can teach it because I’ve been to five Olympic Games. We built an audience of 147,000 people and a site around it, and now we’re opening it to other experts. I’m raising 1.6 million dollars to do it, and I’d love to send you the deck.”"},
+   {l:"30s · Matching",u:"About 30 seconds. Main selling point: the matching technology. Best with technology people: Carlo Padovano, Rodney Zemmel, Grace Ma.",t:"“I’m Luciana Diniz. We built technology that measures how well two riders, or a rider and a horse, fit together, and shows how to improve the partnership. It started in riding, and now it also helps people understand their relationships with others and with themselves. I trust it because I’ve been to five Olympic Games, where the partnership decides everything. I’m raising 1.6 million dollars to grow it, and I’d love to send you the deck.”"},
+   {l:"15s · Athlete",u:"About 15 seconds. Same idea as the 30-second athlete version, when you have little time.",t:"“I’m Luciana Diniz: five Olympic Games, once ranked fourth in the world, and a five-star Grand Prix win this year. I’m building a place where riding experts teach the world, and I’m raising 1.6 million dollars. May I send you the deck?”"},
+   {l:"15s · Teacher",u:"About 15 seconds. Same idea as the 30-second teacher version, when you have little time.",t:"“I teach riders and company leaders my own method, the Butterfly Method, and I learned it through five Olympic Games. Now I’m opening my site to other experts, and I’m raising 1.6 million dollars. May I send you the deck?”"},
+   {l:"15s · Matching",u:"About 15 seconds. Same idea as the 30-second matching version, when you have little time.",t:"“I’m Luciana Diniz, five Olympic Games. We built technology that measures the match between a rider and a horse, or between two people, and shows how to improve it. I’m raising 1.6 million dollars. May I send you the deck?”"}
+  ];
+  var tabs=document.getElementById("vtabs"),vi=0;
+  try{var s=parseInt(localStorage.getItem("nyc-v"),10); if(s>=0&&s<V.length) vi=s;}catch(err){}
+  function showV(){
+    tabs.innerHTML="";
+    V.forEach(function(v,i){var b=document.createElement("button");b.type="button";b.textContent=v.l;b.setAttribute("aria-pressed",i===vi?"true":"false");
+      b.addEventListener("click",function(){vi=i;try{localStorage.setItem("nyc-v",String(i));}catch(err){} showV();});tabs.appendChild(b);});
+    document.getElementById("openerText").textContent=V[vi].t;
+    document.getElementById("openerUse").textContent=V[vi].u;
+  }
+  showV();
+  var btn=document.getElementById("copyBtn");
+  btn.addEventListener("click",function(){
+    var txt=document.getElementById("openerText").textContent;
+    function done(){btn.textContent="Copied";setTimeout(function(){btn.textContent="Copy opener";},1600);}
+    function fallback(){
+      var r=document.createRange(); r.selectNodeContents(document.getElementById("openerText"));
+      var sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      btn.textContent="Selected, copy it"; setTimeout(function(){btn.textContent="Copy opener";},2200);
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,fallback);}else{fallback();}
+  });
+  render();
+})();
+</script>
+
+</body></html>
