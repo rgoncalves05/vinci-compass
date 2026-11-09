@@ -1,9 +1,14 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>NYC Pocket Cheat Sheet</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap">
 <style>
-/* Concept: a phone-first field card. Sticky day filter, one card per person, Say/Ask pairs readable in two seconds. */
+/* Phone-first field card. Sticky day filter, one card per person, Say/Ask pairs readable in two seconds. */
 :root{
   --bg:#EDF0F3; --card:#FFFFFF; --ink:#141C26; --muted:#556070; --line:#D5DBE2;
   --accent:#0B5D4B; --accent-ink:#FFFFFF; --hl:#FFE8A3; --hl-ink:#3A2E00;
@@ -36,16 +41,15 @@ h1{font-family:var(--display);font-weight:700;font-size:1.5rem;line-height:1.1;m
 button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 section{margin-top:22px}
 h2{font-family:var(--display);font-weight:700;font-size:1.125rem;margin:0 0 10px}
+h3.sm{font-family:var(--display);font-weight:700;font-size:1rem;margin:14px 0 6px}
 .opener{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
 .opener p{margin:0 0 12px}
 .copy{font:inherit;font-weight:600;font-size:.9rem;min-height:40px;padding:0 16px;border-radius:10px;border:1px solid var(--accent);
   background:transparent;color:var(--accent);cursor:pointer}
 .vtabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
 .vtabs button{font:inherit;font-size:.85rem;font-weight:600;min-height:40px;padding:0 12px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
-.vtabs button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .vtabs button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .vuse{color:var(--muted);font-size:.9rem}
-.ph{background:var(--hl);color:var(--hl-ink);padding:0 4px;border-radius:4px;font-weight:600}
 .cards{display:grid;gap:12px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 14px 4px;min-width:0}
 .head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
@@ -61,23 +65,37 @@ h2{font-family:var(--display);font-weight:700;font-size:1.125rem;margin:0 0 10px
 .tag{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding-top:3px}
 .pair p{margin:0}
 .day{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
-ul.plain{margin:0;padding-left:1.1rem}
-ul.plain li{margin:4px 0}
 .note{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
 .note p{margin:0 0 8px}.note p:last-child{margin:0}
+.note ul{margin:0 0 8px;padding-left:1.15rem}.note li{margin:4px 0}
+.goal{background:var(--hl);color:var(--hl-ink);border:0}
+.qa{padding:10px 0;border-top:1px solid var(--line)}
+.qa:first-child{border-top:0;padding-top:0}
+.q{font-weight:600;margin:0 0 2px}
+.a{margin:0}
+.say{background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:12px 14px;font-weight:600;margin:10px 0 0}
 ol.rules{margin:0;padding-left:1.25rem}
 ol.rules li{margin:6px 0}
 .foot{margin-top:24px;color:var(--muted);font-size:.8125rem}
 @media (prefers-reduced-motion:no-preference){.days button,.copy{transition:background .15s,color .15s}}
 @media (min-width:640px){.cards{grid-template-columns:1fr 1fr}.card{padding-bottom:6px}}
 </style>
-
+</head>
+<body>
 <div class="wrap">
   <header class="top">
     <h1>NYC Pocket Cheat Sheet</h1>
-    <p class="sub">Vinci Compass Alternative Investments Week · Nov 9–12 · Luciana</p>
+    <p class="sub">Vinci Compass Latam Alternative Investments Week · Nov 9–12 · Luciana</p>
     <div class="days" id="days" role="group" aria-label="Filter by day"></div>
   </header>
+
+  <section aria-labelledby="h-goal">
+    <h2 id="h-goal">Your goal this week</h2>
+    <div class="note goal">
+      <p>The speakers run huge funds. They don’t write 1.6 million checks into young companies. From them you want <b>advice and introductions</b>.</p>
+      <p>The people who could invest are often the <b>other guests</b>: Latin American families and wealth advisors. Meet them at the drinks (Mon 18:30) and the Masquerade (Wed 20:00).</p>
+    </div>
+  </section>
 
   <section aria-labelledby="h-open">
     <h2 id="h-open">Your opener: pick one</h2>
@@ -97,8 +115,40 @@ ol.rules li{margin:6px 0}
   <section aria-labelledby="h-friendly">
     <h2 id="h-friendly">Be friendly, don’t pitch</h2>
     <div class="note">
-      <p>Sebastien Sherman, Dan Oneglia, Riad Abrahams, Chris Taylor, Mitchell Goldstein, Henry Deng, Daniel Loeb.</p>
-      <p>A greeting and one question about their work is enough.</p>
+      <p>Tue: Sebastien Sherman, Riad Abrahams, Dan Oneglia, Joe Carapiet (Blackstone). Wed: Kenneth Caplan (Blackstone); Chris Taylor, Daniel Loeb (Third Point). Thu: Mitchell Goldstein, Henry Deng (Ares).</p>
+      <p>A greeting and one question about their talk is enough.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-money">
+    <h2 id="h-money">If asked about money</h2>
+    <div class="note">
+      <div class="qa"><p class="q">How much?</p><p class="a">“We’re raising 1.6 million dollars, through a convertible loan, which works like a SAFE. I’ll send you the deck.”</p></div>
+      <div class="qa"><p class="q">What does it pay for?</p><p class="a">“Twenty-four months: CheckMatch Full and the business plans, Equestrian Match in clubs in Brazil and Europe, and the Academy.”</p></div>
+      <div class="qa"><p class="q">What’s the valuation / cap?</p><p class="a">Say the cap only if asked directly: “The cap is 12.8 million dollars. Happy to discuss it.”</p></div>
+      <div class="qa"><p class="q">Have you put money in?</p><p class="a">“Yes, about 335 thousand dollars of my own, and I pay the whole team.”</p></div>
+      <div class="qa"><p class="q">Any traction?</p><p class="a">“CheckMatch Lite just launched. We start with student associations at the University of Amsterdam. Two riding clubs in São Paulo and a partner in Europe want Equestrian Match.”</p></div>
+      <div class="qa"><p class="q">Where is the company?</p><p class="a">“LD Equestriana GmbH, in Germany. The loan is under German law.”</p></div>
+      <div class="qa"><p class="q">Who builds it?</p><p class="a">“A team of about ten in product, AI, matching, design and development. Pareto.io runs go-to-market.”</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-vsop">
+    <h2 id="h-vsop">Participação do time (VSOP)</h2>
+    <div class="note" lang="pt-BR">
+      <p><b>VSOP = Virtual Stock-Option Program.</b> Por que importa em Nova York:</p>
+      <h3 class="sm">O problema que o investidor vai ver</h3>
+      <p>O valor da empresa está no time técnico que construiu o produto e o motor do Match. Se essas pessoas só têm salário, o investidor pensa: “se elas saírem, quem toca o produto?” Isso é risco, e o investidor ou não entra ou entra pagando menos.</p>
+      <h3 class="sm">A solução, o VSOP (plano de participação virtual)</h3>
+      <ul>
+        <li><b>Reserva:</b> separa-se cerca de 10% da empresa para o time.</li>
+        <li><b>Sem sócios novos:</b> ninguém vira sócio. Na venda da empresa, cada um recebe em dinheiro a sua parte.</li>
+        <li><b>Vesting:</b> a parte é conquistada ao longo de 4 anos. Quem sai cedo não leva nada.</li>
+        <li><b>Controle:</b> a Luciana continua no controle da empresa.</li>
+      </ul>
+      <p><b>Analogia:</b> é como dar ao tratador uma porcentagem da venda da égua. Ele não é dono, mas fica e cuida bem dela até a venda.</p>
+      <h3 class="sm">A frase para Nova York</h3>
+      <p class="say" lang="en">“We’re setting up a 10% VSOP for the team, with 4-year vesting.”</p>
     </div>
   </section>
 
@@ -113,55 +163,51 @@ ol.rules li{margin:6px 0}
     </div>
   </section>
 
-  <section aria-labelledby="h-money">
-    <h2 id="h-money">If asked about money</h2>
-    <div class="note">
-      <p>“We’re raising 1.6 million dollars. I’ll send the details and the deck.”</p>
-      <p>Don’t say what the company is worth unless the numbers were agreed beforehand.</p>
-    </div>
-  </section>
-
   <section aria-labelledby="h-after">
     <h2 id="h-after">After each conversation</h2>
     <div class="note">
-      <p>Write down the name, what they said, and the next step. Send a two-line note, the deck and the website within 24 hours.</p>
+      <p>Write down the name, what they said, and the next step. Within 24 hours send a two-line note, the one-pager and the website. Send the full deck when they ask for it.</p>
+      <p>Masquerade (Wed 20:00): dress code smart casual, black and white.</p>
     </div>
   </section>
 
-  <p class="foot">Full profiles are in the briefing document.</p>
+  <p class="foot">Names, titles and times checked against the official program on Nov 9. Full profiles are in the briefing document.</p>
 </div>
 
 <script>
 (function(){
   var DAYS=[["all","All"],["mon","Mon 9"],["tue","Tue 10"],["wed","Wed 11"],["thu","Thu 12"]];
   var PEOPLE=[
-    {d:"mon",n:"George Kerr",f:"Vinci Compass",w:"Sells investment products to investors in Brazil",p:"high",s:"I’m Brazilian, with a big audience around the world, mostly outside Brazil.",a:"Which of your clients like to invest in young companies?"},
-    {d:"mon",n:"Daniel Gordonos",f:"Vinci Compass",w:"Runs the hedge funds at Vinci Compass. Worked at Citadel and Balyasny. Stanford MBA.",p:"med",s:"I’d love your view on how investors see a business built around a person and their audience.",a:"Do your clients ever invest directly in companies, not only in funds?"},
-    {d:"mon",n:"Anabel Vidal, José Tomás Vicuña",f:"Vinci Compass (if present)",w:"Lead the teams that serve wealthy families",p:"high",s:"I’m building a website where experts share their courses with my audience.",a:"Which families invest in new companies?"},
-    {d:"tue",n:"Rodney Zemmel",f:"Blackstone",w:"Helps Blackstone’s companies run better, including with AI. Ex-McKinsey.",p:"high",s:"We built AI coaches for riders, and we’re opening the site to other experts.",a:"Where do AI coaching products work, and where not?"},
-    {d:"wed",n:"William Rosener",f:"Blackstone Strategic Partners",w:"Talks with Blackstone’s investors and helps bring in new ones",p:"high",s:"I’m looking for the right investors, not just any.",a:"Who here should I meet to talk about a young company selling online courses and apps?"},
-    {d:"wed",n:"Grace Ma",f:"One Equity Partners",w:"Talks with the investors who put money into One Equity Partners",p:"high",s:"I’m new to fundraising and would love your advice.",a:"Which of your investors like companies built around a person?"},
-    {d:"wed",n:"Greg Belinfanti",f:"One Equity Partners",w:"Senior partner. Invests mostly in health care companies.",p:"med",s:"My work connects performance and wellbeing.",a:"How do you judge a wellness or performance business?"},
-    {d:"wed",n:"Carlo Padovano",f:"One Equity Partners",w:"Partner. Invests in technology companies.",p:"med",s:"We built technology that matches people, and other companies could pay to use it.",a:"What makes technology something other companies will pay to use?"},
-    {d:"wed",n:"Viral Patel",f:"Blackstone",w:"Runs a Blackstone private equity business. Has a technology and growth background.",p:"med",s:"I’d love your view on subscription websites.",a:"What separates subscription sites that grow from those that stall?"},
-    {d:"thu",n:"Matthew Witheiler",f:"Wellington",w:"Invests in fast-growing companies, including consumer and tech. Used to invest in start-ups.",p:"high",s:"We’re early, and I want to understand what growth investors need to see.",a:"What would a subscription site need to show you?"},
-    {d:"thu",n:"Barry Miller",f:"Ares",w:"Partner at Ares. Used to run private equity for New York City’s pension funds.",p:"med",s:"I’d love your view from the investor side.",a:"What do investors check first when the founder’s name is the main asset?"},
-    {d:"thu",n:"Ares sports, media and entertainment speaker",f:"Ares",w:"Name to confirm on the day",p:"tbc",s:"My career is in sport, and I have a global audience.",a:"Which sports and media investors back businesses started by athletes?"}
+    {d:"mon",t:"16:00",n:"George Kerr",f:"Vinci Compass · Partner, Head of Product Distribution, Brazil",w:"Decides which investment products reach Vinci’s clients in Brazil.",p:"high",s:"I’m Brazilian, with an audience around the world, mostly outside Brazil.",a:"Which of your clients like to invest directly in young companies?"},
+    {d:"mon",t:"16:00",n:"Ignacio Pérez de Arce",f:"Vinci Compass · Head of Third Party Distribution",w:"Works with the outside advisors and banks that sell Vinci’s products.",p:"med",s:"I’m meeting advisors this week and want to understand how they work.",a:"Which advisors in Latin America bring their clients into private deals?"},
+    {d:"mon",t:"16:30",n:"Daniel Gordonos",f:"Vinci Compass · Head of Hedge Funds",w:"Runs Vinci’s macro funds. Worked at Citadel, Balyasny and Graham. Stanford MBA.",p:"med",s:"I’d love your view on how investors see a business built around a person and her audience.",a:"When you meet a founder, what makes you trust the numbers?"},
+    {d:"mon",t:"17:00",n:"Ángela María Lozano",f:"Vinci Compass · Head of Offshore Alternative Investments",w:"Advises institutions and family offices on private-market portfolios. Based in Chile.",p:"high",s:"I’m raising a small round and want to reach families who like early-stage deals.",a:"How do your family-office clients look at direct investments in start-ups?"},
+    {d:"tue",t:"11:00",n:"Rodney Zemmel",f:"Blackstone · Global Head of Portfolio Operations",w:"Leads Blackstone’s Operating Team, incl. AI in its ~250 companies. Ex-McKinsey Digital. Co-author of “Rewired”. Talk: “A Conversation on AI”.",p:"high",s:"We use AI to show people how they fit with others, and how to improve the relationship.",a:"Where do you see AI products that people really keep using?"},
+    {d:"tue",t:"13:00",n:"Donald Park (to confirm)",f:"Valor Equity Partners · Partner",w:"Technology investor, ex-Vista Equity. Valor’s session details were still TBC.",p:"tbc",s:"We built the technology first, and now we’re bringing it to market.",a:"What do you look for in a young software company?"},
+    {d:"wed",t:"10:00",n:"Viral Patel",f:"Blackstone · CEO, BX Private Equity Strategies",w:"Joined Blackstone in 2005; helped launch Tactical Opportunities. Sits on the Blackstone Growth committee. Talk: value creation.",p:"med",s:"I’m early, and I want to build value the right way from day one.",a:"What creates value fastest in a young company?"},
+    {d:"wed",t:"11:00",n:"William Rosener",f:"Blackstone Strategic Partners · Managing Director",w:"Head of Institutional Client Solutions: leads fundraising for Blackstone’s secondaries business. Talk: secondaries.",p:"high",s:"I’m looking for the right investors, not just any.",a:"Who here should I meet about a young company with apps and online courses?"},
+    {d:"wed",t:"15:30",n:"Grace Ma",f:"One Equity Partners · Principal, Investor Relations",w:"Handles fundraising and investor relations. Ex-Oak Hill and Goldman Sachs.",p:"high",s:"I’m new to fundraising and would love your advice.",a:"What do investors ask first when they meet a first-time founder?"},
+    {d:"wed",t:"15:30",n:"Greg Belinfanti",f:"One Equity Partners · President",w:"Leads the firm. Invests mostly in health care and business services.",p:"high",s:"Loneliness is now a health problem. One in six people is lonely, says the WHO. We built a tool that strengthens relationships.",a:"How do you judge a business that sits between wellbeing and health?"},
+    {d:"wed",t:"15:30",n:"Carlo Padovano",f:"One Equity Partners · Partner",w:"Invests in technology and IT services. Before OEP, worked at GP Investments, a Brazilian firm.",p:"med",s:"We built a matching engine, and other companies could license it.",a:"What makes technology something other companies will pay to use?"},
+    {d:"thu",t:"10:00",n:"Matthew Witheiler",f:"Wellington · Head of Late-Stage Growth",w:"Invests in tech, consumer, health care. Was an early-stage VC at Flybridge. Forbes Midas list six years running.",p:"high",s:"We’re early, and I want to understand what growth investors will need to see later.",a:"What should a consumer app prove in its first two years?"},
+    {d:"thu",t:"12:00",n:"Liz Jones",f:"Ares · Partner, Head of Private Wealth Partnerships",w:"Leads Ares’ work with private banks and wealth firms. Has talked publicly about sports and media investing.",p:"high",s:"My career is in sport, and I have an audience of 147,000 people.",a:"Which wealth clients like to back businesses started by athletes?"},
+    {d:"thu",t:"13:15",n:"Miles Jackson, Kate Schuler",f:"Ares · Sports, Media &amp; Entertainment",w:"Run the Ares session on sports, media and entertainment.",p:"high",s:"I’ve been to five Olympic Games, and I built a media and education business around it.",a:"Which investors in your world back athlete-led businesses at an early stage?"},
+    {d:"thu",t:"15:00",n:"Barry Miller",f:"Ares · Partner, CEO of Ares Private Markets Fund",w:"Secondaries specialist. Used to run private equity for New York City’s pension funds.",p:"med",s:"I’d love your view from the investor side.",a:"What do investors check first when the founder’s name is the main asset?"}
   ];
-  var LABEL={high:"Priority",med:"Medium",tbc:"Name TBC"};
+  var LABEL={high:"Priority",med:"Medium",tbc:"To confirm"};
   var DAYNAME={mon:"Monday",tue:"Tuesday",wed:"Wednesday",thu:"Thursday"};
   var cur="all";
   try{var s=localStorage.getItem("nyc-day"); if(s) cur=s;}catch(e){}
   var h=(location.hash||"").slice(1); if(DAYS.some(function(d){return d[0]===h;})) cur=h;
 
-  function esc(t){var d=document.createElement("div");d.textContent=t;return d.innerHTML;}
+  function esc(t){var d=document.createElement("div");d.innerHTML=t;return d.innerHTML;}
   function render(){
     var daysEl=document.getElementById("days");
     daysEl.innerHTML=DAYS.map(function(d){return '<button type="button" data-d="'+d[0]+'" aria-pressed="'+(d[0]===cur)+'">'+d[1]+'</button>';}).join("");
     var list=PEOPLE.filter(function(p){return cur==="all"||p.d===cur;});
     document.getElementById("count").textContent="· "+list.length;
     document.getElementById("cards").innerHTML=list.map(function(p){
-      return '<article class="card"><p class="day">'+DAYNAME[p.d]+'</p>'+
+      return '<article class="card"><p class="day">'+DAYNAME[p.d]+' · '+p.t+'</p>'+
         '<div class="head"><div><h3 class="name">'+esc(p.n)+'</h3><p class="firm">'+esc(p.f)+'</p></div>'+
         '<span class="pill '+p.p+'">'+LABEL[p.p]+'</span></div>'+
         '<p class="who">'+esc(p.w)+'</p>'+
@@ -176,19 +222,19 @@ ol.rules li{margin:6px 0}
     render();
   });
   var V=[
-   {l:"30s · Athlete",u:"About 30 seconds. Main selling point: her results in the sport. Best with people who respect achievement: Vinci Compass hosts, Barry Miller, the Ares sports speaker.",t:"“I’m Luciana Diniz. I’ve been to five Olympic Games, I was ranked fourth in the world, and this year I won a five-star Grand Prix in Abu Dhabi. After thirty years at the top of the sport, I built an audience of 147,000 people and a site where riders learn from me. Now I’m opening it to other experts. I’m raising 1.6 million dollars to do it, and I’d love to send you the deck.”"},
-   {l:"30s · Teacher",u:"About 30 seconds. Main selling point: how she teaches. Best with people who care about learning and people: Rodney Zemmel, Viral Patel, Matthew Witheiler.",t:"“I’m Luciana Diniz. I teach riders and company leaders my own method, the Butterfly Method, in clinics and courses, and I’ve taught hundreds of students in more than 40 countries. I can teach it because I’ve been to five Olympic Games. We built an audience of 147,000 people and a site around it, and now we’re opening it to other experts. I’m raising 1.6 million dollars to do it, and I’d love to send you the deck.”"},
-   {l:"30s · Matching",u:"About 30 seconds. Main selling point: the matching technology. Best with technology people: Carlo Padovano, Rodney Zemmel, Grace Ma.",t:"“I’m Luciana Diniz. We built technology that measures how well two riders, or a rider and a horse, fit together, and shows how to improve the partnership. It started in riding, and now it also helps people understand their relationships with others and with themselves. I trust it because I’ve been to five Olympic Games, where the partnership decides everything. I’m raising 1.6 million dollars to grow it, and I’d love to send you the deck.”"},
-   {l:"15s · Athlete",u:"About 15 seconds. Same idea as the 30-second athlete version, when you have little time.",t:"“I’m Luciana Diniz: five Olympic Games, once ranked fourth in the world, and a five-star Grand Prix win this year. I’m building a place where riding experts teach the world, and I’m raising 1.6 million dollars. May I send you the deck?”"},
-   {l:"15s · Teacher",u:"About 15 seconds. Same idea as the 30-second teacher version, when you have little time.",t:"“I teach riders and company leaders my own method, the Butterfly Method, and I learned it through five Olympic Games. Now I’m opening my site to other experts, and I’m raising 1.6 million dollars. May I send you the deck?”"},
-   {l:"15s · Matching",u:"About 15 seconds. Same idea as the 30-second matching version, when you have little time.",t:"“I’m Luciana Diniz, five Olympic Games. We built technology that measures the match between a rider and a horse, or between two people, and shows how to improve it. I’m raising 1.6 million dollars. May I send you the deck?”"}
+   {l:"30s · Athlete",u:"About 30 seconds. Lead with her results. Best with Vinci hosts, the Ares sports team, Barry Miller.",t:"“I’m Luciana Diniz. I’ve been to five Olympic Games, I was ranked fourth in the world, and this year I won the five-star Grand Prix in Abu Dhabi. Thirty years with horses taught me that performance depends on the partnership. So we built technology that measures and improves relationships: CheckMatch for people, Equestrian Match for riders and horses, and an Academy where riders learn from me. We’re raising 1.6 million dollars to grow them. May I send you the deck?”"},
+   {l:"30s · Relationships",u:"About 30 seconds. Lead with the problem. Best with Greg Belinfanti, Grace Ma, Matthew Witheiler.",t:"“Relationships decide how we live, yet nobody explains how they work. One in six people is lonely, says the WHO. We built CheckMatch, an AI tool that shows people how they fit with others and how to make the relationship better. The free version just launched, and we start with student associations at the University of Amsterdam. I’m Luciana Diniz, five Olympic Games: the partnership with a horse taught me this. We’re raising 1.6 million dollars. May I send you the deck?”"},
+   {l:"30s · Technology",u:"About 30 seconds. Lead with the matching engine. Best with Rodney Zemmel, Carlo Padovano, Donald Park.",t:"“I’m Luciana Diniz. We built a matching engine that measures how well two people, or a rider and a horse, fit together, and shows how to improve it. It runs two products today: CheckMatch for people and Equestrian Match for riders. Other companies could license the engine for teams and coaching. I trust it because I’ve been to five Olympic Games, where the partnership decides everything. We’re raising 1.6 million dollars to grow it. May I send you the deck?”"},
+   {l:"15s · Athlete",u:"About 15 seconds, when time is short.",t:"“I’m Luciana Diniz: five Olympic Games, and the five-star Grand Prix in Abu Dhabi this year. We built technology that improves relationships, between people and between riders and horses. I’m raising 1.6 million dollars. May I send you the deck?”"},
+   {l:"15s · Relationships",u:"About 15 seconds, when time is short.",t:"“One in six people is lonely. We built CheckMatch, an AI tool that shows people how to strengthen their relationships. It just launched, starting at the University of Amsterdam. I’m raising 1.6 million dollars. May I send you the deck?”"},
+   {l:"15s · Technology",u:"About 15 seconds, when time is short.",t:"“I’m Luciana Diniz, five Olympic Games. We built an engine that measures the match between two people, or a rider and a horse, and shows how to improve it. I’m raising 1.6 million dollars. May I send you the deck?”"}
   ];
   var tabs=document.getElementById("vtabs"),vi=0;
-  try{var s=parseInt(localStorage.getItem("nyc-v"),10); if(s>=0&&s<V.length) vi=s;}catch(err){}
+  try{var s2=parseInt(localStorage.getItem("nyc-v2"),10); if(s2>=0&&s2<V.length) vi=s2;}catch(err){}
   function showV(){
     tabs.innerHTML="";
     V.forEach(function(v,i){var b=document.createElement("button");b.type="button";b.textContent=v.l;b.setAttribute("aria-pressed",i===vi?"true":"false");
-      b.addEventListener("click",function(){vi=i;try{localStorage.setItem("nyc-v",String(i));}catch(err){} showV();});tabs.appendChild(b);});
+      b.addEventListener("click",function(){vi=i;try{localStorage.setItem("nyc-v2",String(i));}catch(err){} showV();});tabs.appendChild(b);});
     document.getElementById("openerText").textContent=V[vi].t;
     document.getElementById("openerUse").textContent=V[vi].u;
   }
@@ -207,5 +253,7 @@ ol.rules li{margin:6px 0}
   render();
 })();
 </script>
+</body>
+</html>
 
 </body></html>
